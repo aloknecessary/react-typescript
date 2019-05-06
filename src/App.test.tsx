@@ -7,3 +7,10 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+it('contains Alok in dom', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+  expect(div.innerHTML).toMatch('Hello Alok!')
+  ReactDOM.unmountComponentAtNode(div);
+});
