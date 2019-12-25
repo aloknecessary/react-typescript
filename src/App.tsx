@@ -11,10 +11,17 @@ class App extends React.Component {
   }
   state ={
     message: 'Change the message in text box..',
-    count: 0
+    count: 0,
+    error: null
   }
-  
+  componentDidUpdate(){
+    console.log('update', this.state.count, this.state.error);
+    if(this.state.error) alert ('errrrrrrrrrrr');
+  }
+
   render() {
+    console.log('render');
+    //this.setState({error: this.state.count % 3 === 0});
     return (
       <div>
         <div  className="row">
@@ -27,9 +34,9 @@ class App extends React.Component {
             <input name="message" className="form-control" type="text" value = {this.state.message} onChange={(e) => this.updateMessage(e)}/>
           </div>
           <div className="offset-3 col-6 m-10 text-center">
-            <button className="btn btn-secondary" onClick={() => this.setState({count : this.state.count - 1})}>-</button>
+            <button className="btn btn-secondary" onClick={() => this.setState({count : this.state.count - 1, error: this.state.count % 3 === 0})}>-</button>
             <label style={{margin: '0 25px'}}>{this.state.count}</label>
-            <button className="btn btn-info" onClick={() => this.setState({count : this.state.count + 1})}>+</button>
+            <button className="btn btn-info" onClick={() => this.setState({count : this.state.count + 1, error: this.state.count % 3 === 0})}>+</button>
           </div>
         </div>
       </div>
